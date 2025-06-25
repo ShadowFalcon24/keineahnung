@@ -1,3 +1,6 @@
+version: '3.8'
+
+services:
   twitch-oauth:
     build: ./app
     container_name: twitch-oauth
@@ -10,3 +13,7 @@
       - LETSENCRYPT_EMAIL=deine@email.de
     networks:
       - nginx-network
+
+networks:
+  nginx-network:
+    driver: bridge
