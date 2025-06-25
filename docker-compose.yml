@@ -1,7 +1,12 @@
-version: '3'
-services:
   twitch-oauth:
     build: ./app
+    container_name: twitch-oauth
+    restart: unless-stopped
     ports:
       - "3000:3000"
-    restart: unless-stopped
+    environment:
+      - VIRTUAL_HOST=drmax03.de
+      - LETSENCRYPT_HOST=drmax03.de
+      - LETSENCRYPT_EMAIL=deine@email.de
+    networks:
+      - nginx-network
